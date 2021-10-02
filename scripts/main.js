@@ -150,16 +150,6 @@ const busketModal = document.querySelector(".busket-modal");
 const busketOpenModal = document.querySelector(".basket__btn");
 const busketModalClose = document.querySelector(".busket-modal__close");
 const createBusketItems = () => async() => {
-    const busket = document.querySelector(".busket-modal");
-    const busketItemContainer = createElement("div", "busket-modal__container");
-    const busketLine = createElement("div", "busket-modal__line");
-    const busketTotal = createElement("div", "busket-modal__total");
-    const totalCreate = createElement("p", "busket-total", "Total:");
-    const fullSum = createElement("p", "busket-full__sum");
-
-    busketTotal.append(totalCreate, fullSum);
-    busket.append(busketItemContainer, busketLine, busketTotal);
-
     let Fullsum = 0;
     const total = document.querySelector(".busket-full__sum");
     const container = document.querySelector(".busket-modal__container");
@@ -178,31 +168,7 @@ const createBusketItems = () => async() => {
     })
     total.textContent = `$ ${Fullsum.toFixed(2)}`;
 }
-const busketIsEmpty = () => async() => {
-    busketArr.forEach(element => {
-        if (element.count !== 0) {
-            return false;
-        }
-    })
-    return true;
-}
-const busketIsEmtyChecked = () => {
-    const busket = document.querySelector(".busket-modal");
-    if (busketIsEmpty) {
-        const isEmptyNode = createElement("div", "busketIsEmpty", "Cart  is  empty");
-        busket.append(isEmptyNode);
-    } else {
-        const busketItemContainer = createElement("div", "busket-modal__container");
-        const busketLine = createElement("div", "busket-modal__line");
-        const busketTotal = createElement("div", "busket-modal__total");
-        const total = createElement("p", "busket-total", "Total:");
-        const fullSum = createElement("p", "busket-fill__sum");
 
-        busketTotal.append(total, fullSum);
-        busket.appen(busketItemContainer, busketLine);
-    };
-}
-busketIsEmtyChecked();
 
 
 
