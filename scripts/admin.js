@@ -115,9 +115,7 @@ const createPastry = async(pastry) => {
                 }
 
                 putData("pastry/update", id, data);
-                editName.style.backgroundImage = `
-                url(.. / assets / admin_text.svg)
-                `;
+                editName.style.backgroundImage = `url(../assets/admin_text.svg)`;
                 itemName.innerHTML = itemNameInput.value;
 
             } else {
