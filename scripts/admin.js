@@ -88,7 +88,7 @@ const createPastry = async(pastry) => {
         inStockMinus.addEventListener("click", () => {
             const item = getDataById("pastry/detail", id);
             item.then(data => putData("pastry/update", id, {
-                inStock: --data.inStock
+                inStock: data.inStock <= 0 ? 0 : --data.inStock,
             }));
             item.then(data => inStockValue.textContent = data.inStock);
 
@@ -107,9 +107,7 @@ const createPastry = async(pastry) => {
         })
         editName.addEventListener("click", () => {
 
-            if (editName.style.backgroundImage == `
-                url("../assets/admin_text_edit.svg")
-                `) {
+            if (editName.style.backgroundImage == `url("../assets/admin_text_edit.svg")`) {
                 const itemNameInput = document.querySelector(".item__name_input");
 
                 const data = {
@@ -124,15 +122,9 @@ const createPastry = async(pastry) => {
 
             } else {
 
-                editName.style.backgroundImage = `
-                url(.. / assets / admin_text_edit.svg)
-                `;
+                editName.style.backgroundImage = `url(../assets/admin_text_edit.svg)`;
                 const item = getDataById("pastry/detail", id);
-                item.then(date => itemName.innerHTML = ` < input type = "
-                text " class="
-                item__name_input " value="
-                $ { date.name }
-                ">`);
+                item.then(date => itemName.innerHTML = ` <input type="text" class="item__name_input" value="${ date.name }">`);
 
 
             }
